@@ -9,13 +9,9 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="```php
-<?php
-echo 'Hello World!';。">
+<meta name="description" content="RC4：Rivest Cipher 4 的缩写，是一种流加密算法，密钥长度可变，它加解密使用相同的密钥。">
 <meta property="og:title" content="Hello World!">
-<meta property="og:description" content="```php
-<?php
-echo 'Hello World!';。">
+<meta property="og:description" content="RC4：Rivest Cipher 4 的缩写，是一种流加密算法，密钥长度可变，它加解密使用相同的密钥。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://huxubo.github.io/post/Hello%20World%21.html">
 <meta property="og:image" content="https://cdn.37o.cc/logo.jpg">
@@ -74,8 +70,66 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-ent">&lt;?php</span>
-<span class="pl-k">echo</span> <span class="pl-s">'Hello World!'</span>;</pre></div></div>
+<div class="markdown-body" id="postBody"><p>RC4：Rivest Cipher 4 的缩写，是一种流加密算法，密钥长度可变，它加解密使用相同的密钥。</p>
+<p>由 Ron Rivest 在 1987 年设计。它以其简单性和高效性而闻名，并被广泛用于加密通信和数据保护领域。 RC4 算法使用一个变长的密钥（通常为 8 至 256 字节）来生成一个伪随机的密钥流，然后将该密钥流与原始数据进行异或运算以实现加密。解密时，再次将密钥流与密文进行异或运算即可恢复原始数据。</p>
+<p>RC4 算法的核心是生成密钥流的过程，该过程基于密钥和伪随机数生成器。它使用了状态向量、置换操作和密钥编排等步骤来生成密钥流。这使得 RC4 算法具有快速、高效的特点。 然而，尽管 RC4 在设计初期被广泛应用，但随着时间的推移，研究人员发现了一些安全漏洞和弱点。例如，RC4 存在针对密钥的偏差攻击和密钥重用等问题。因此，在现代加密应用中，RC4 已经不再被推荐使用。 相比之下，更强大和安全的加密算法，如 AES（Advanced Encryption Standard），已经取代了 RC4 在许多领域的应用。</p>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-ent">&lt;?php</span>
+<span class="pl-c">/**</span>
+<span class="pl-c"> * RC4加密解密算法</span>
+<span class="pl-c"> * @param string $data 要加密或解密的数据，十六进制表示</span>
+<span class="pl-c"> * @param string $pwd  加密使用的密钥</span>
+<span class="pl-c"> * @param bool $decrypt true表示解密，false表示加密</span>
+<span class="pl-c"> * @return string 加密或解密后的数据，十六进制表示</span>
+<span class="pl-c"> */</span>
+<span class="pl-k">function</span> <span class="pl-en">rc4</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>pwd</span>, <span class="pl-s1"><span class="pl-c1">$</span>decrypt</span> = <span class="pl-c1">false</span>)
+{
+    <span class="pl-s1"><span class="pl-c1">$</span>key</span> = [];
+    <span class="pl-s1"><span class="pl-c1">$</span>box</span> = [];
+    <span class="pl-s1"><span class="pl-c1">$</span>pwd_length</span> = strlen(<span class="pl-s1"><span class="pl-c1">$</span>pwd</span>);
+    <span class="pl-s1"><span class="pl-c1">$</span>data_length</span> = strlen(<span class="pl-s1"><span class="pl-c1">$</span>data</span>);
+    <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> = <span class="pl-s">''</span>;
+
+    for (<span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-c1">256</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
+        <span class="pl-s1"><span class="pl-c1">$</span>key</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = ord(<span class="pl-s1"><span class="pl-c1">$</span>pwd</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span> % <span class="pl-s1"><span class="pl-c1">$</span>pwd_length</span>]);
+        <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = <span class="pl-s1"><span class="pl-c1">$</span>i</span>;
+    }
+
+    for (<span class="pl-s1"><span class="pl-c1">$</span>j</span> = <span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-c1">256</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
+        <span class="pl-s1"><span class="pl-c1">$</span>j</span> = (<span class="pl-s1"><span class="pl-c1">$</span>j</span> + <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] + <span class="pl-s1"><span class="pl-c1">$</span>key</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>]) % <span class="pl-c1">256</span>;
+        <span class="pl-s1"><span class="pl-c1">$</span>tmp</span> = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>];
+        <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>];
+        <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>] = <span class="pl-s1"><span class="pl-c1">$</span>tmp</span>;
+    }
+
+    for (<span class="pl-s1"><span class="pl-c1">$</span>a</span> = <span class="pl-s1"><span class="pl-c1">$</span>j</span> = <span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-s1"><span class="pl-c1">$</span>data_length</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
+        <span class="pl-s1"><span class="pl-c1">$</span>a</span> = (<span class="pl-s1"><span class="pl-c1">$</span>a</span> + <span class="pl-c1">1</span>) % <span class="pl-c1">256</span>;
+        <span class="pl-s1"><span class="pl-c1">$</span>j</span> = (<span class="pl-s1"><span class="pl-c1">$</span>j</span> + <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>]) % <span class="pl-c1">256</span>;
+        <span class="pl-s1"><span class="pl-c1">$</span>tmp</span> = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>];
+        <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>] = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>];
+        <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>] = <span class="pl-s1"><span class="pl-c1">$</span>tmp</span>;
+        <span class="pl-s1"><span class="pl-c1">$</span>k</span> = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[((<span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>] + <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>]) % <span class="pl-c1">256</span>)];
+        <span class="pl-s1"><span class="pl-c1">$</span>result</span> = ord(<span class="pl-s1"><span class="pl-c1">$</span>data</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>]) ^ <span class="pl-s1"><span class="pl-c1">$</span>k</span>;
+        <span class="pl-k">if</span> (<span class="pl-s1"><span class="pl-c1">$</span>decrypt</span>) {
+            <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> .= chr(<span class="pl-s1"><span class="pl-c1">$</span>result</span>);
+        } <span class="pl-k">else</span> {
+            <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> .= sprintf("<span class="pl-s">%02x</span>", <span class="pl-s1"><span class="pl-c1">$</span>result</span>);
+        }
+    }
+
+    <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-c1">$</span>cipher</span>;
+}
+
+<span class="pl-c">// 测试加密和解密</span>
+<span class="pl-s1"><span class="pl-c1">$</span>data</span> = "<span class="pl-s">HelloWorld</span>"; <span class="pl-c">// 要加密的数据</span>
+<span class="pl-s1"><span class="pl-c1">$</span>key</span> = "<span class="pl-s">my_secret_key</span>"; <span class="pl-c">// 加密使用的密钥</span>
+
+<span class="pl-c">// 加密</span>
+<span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span> = rc4(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>key</span>);
+<span class="pl-k">echo</span> "<span class="pl-s">加密后的数据：</span><span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span>\n";
+
+<span class="pl-c">// 解密</span>
+<span class="pl-s1"><span class="pl-c1">$</span>decrypted_data</span> = rc4(hex2bin(<span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span>), <span class="pl-s1"><span class="pl-c1">$</span>key</span>, <span class="pl-c1">true</span>);
+<span class="pl-k">echo</span> "<span class="pl-s">解密后的数据：</span><span class="pl-s1"><span class="pl-c1">$</span>decrypted_data</span>\n";</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
