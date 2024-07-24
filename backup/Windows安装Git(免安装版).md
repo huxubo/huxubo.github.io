@@ -10,7 +10,7 @@ https://git-scm.com/download/win
 > 创建系统环境变量 
 `变量名：GIT_HOME 值：D:\Dev_evn\git-bash`
 
-![屏幕截图 2024-07-24 102437](https://github.com/user-attachments/assets/f310b31f-a266-4f1b-a003-dee6ae32ddf9)
+![屏幕截图 2024-07-24 102437](https://github.com/user-attachments/assets/737473f4-71bb-4b53-b1cd-3da5134d1ef0)
 
 > path下添加环境变量
 `%GIT_HOME%、%GIT_HOME%\bin、%GIT_HOME%\usr\bin`

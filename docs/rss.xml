@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>簡單</title><link>https://huxubo.github.io</link><description>于代码中找寻簡單之美</description><copyright>簡單</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.37o.cc/logo.jpg</url><title>avatar</title><link>https://huxubo.github.io</link></image><lastBuildDate>Wed, 24 Jul 2024 02:45:53 +0000</lastBuildDate><managingEditor>簡單</managingEditor><ttl>60</ttl><webMaster>簡單</webMaster><item><title>Windows安装Git(免安装版)</title><link>https://huxubo.github.io/post/Windows-an-zhuang-Git%28-mian-an-zhuang-ban-%29.html</link><description>一、安装GIT&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>簡單</title><link>https://huxubo.github.io</link><description>于代码中找寻簡單之美</description><copyright>簡單</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.37o.cc/logo.jpg</url><title>avatar</title><link>https://huxubo.github.io</link></image><lastBuildDate>Wed, 24 Jul 2024 03:03:46 +0000</lastBuildDate><managingEditor>簡單</managingEditor><ttl>60</ttl><webMaster>簡單</webMaster><item><title>Windows安装Git(免安装版)</title><link>https://huxubo.github.io/post/Windows-an-zhuang-Git%28-mian-an-zhuang-ban-%29.html</link><description>一、安装GIT&#13;
 1、Git下载&#13;
 https://git-scm.com/download/win&#13;
 ![屏幕截图 2024-07-24 101137](https://github.com/user-attachments/assets/cce5a8a4-909f-4019-8b7f-b001cfa45ffc)&#13;
@@ -11,7 +11,7 @@ https://git-scm.com/download/win&#13;
 &gt; 创建系统环境变量 &#13;
 `变量名：GIT_HOME 值：D:\Dev_evn\git-bash`&#13;
 &#13;
-![屏幕截图 2024-07-24 102437](https://github.com/user-attachments/assets/f310b31f-a266-4f1b-a003-dee6ae32ddf9)&#13;
+![屏幕截图 2024-07-24 102437](https://github.com/user-attachments/assets/737473f4-71bb-4b53-b1cd-3da5134d1ef0)&#13;
 &#13;
 &gt; path下添加环境变量&#13;
 `%GIT_HOME%、%GIT_HOME%\bin、%GIT_HOME%\usr\bin`&#13;
