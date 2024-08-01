@@ -385,8 +385,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">class</span> <span class="pl-v">RsaUtil</span>
 {
 
-    <span class="pl-k">const</span> <span class="pl-c1">CHAR_SET</span> = "<span class="pl-s">UTF-8</span>";
-    <span class="pl-k">const</span> <span class="pl-c1">BASE_64_FORMAT</span> = "<span class="pl-s">UrlSafeNoPadding</span>";
+    <span class="pl-k">const</span> <span class="pl-c1">CHAR_SET</span> = <span class="pl-s">"<span class="pl-s">UTF-8</span>"</span>;
+    <span class="pl-k">const</span> <span class="pl-c1">BASE_64_FORMAT</span> = <span class="pl-s">"<span class="pl-s">UrlSafeNoPadding</span>"</span>;
     <span class="pl-k">const</span> <span class="pl-c1">RSA_ALGORITHM_KEY_TYPE</span> = <span class="pl-c1">OPENSSL_KEYTYPE_RSA</span>;
     <span class="pl-k">const</span> <span class="pl-c1">RSA_ALGORITHM_SIGN</span> = <span class="pl-c1">OPENSSL_ALGO_SHA256</span>;
 
@@ -398,13 +398,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     {
         <span class="pl-k">if</span> (<span class="pl-s1"><span class="pl-c1">$</span>pub_key</span>) {
             <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span> = <span class="pl-s1"><span class="pl-c1">$</span>pub_key</span>;
-            <span class="pl-s1"><span class="pl-c1">$</span>pub_id</span> = openssl_pkey_get_public(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
-            <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> = openssl_pkey_get_details(<span class="pl-s1"><span class="pl-c1">$</span>pub_id</span>)[<span class="pl-s">'bits'</span>];
+            <span class="pl-s1"><span class="pl-c1">$</span>pub_id</span> = <span class="pl-en">openssl_pkey_get_public</span>(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
+            <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> = <span class="pl-en">openssl_pkey_get_details</span>(<span class="pl-s1"><span class="pl-c1">$</span>pub_id</span>)[<span class="pl-s">'<span class="pl-s">bits</span>'</span>];
         }
         <span class="pl-k">if</span> (<span class="pl-s1"><span class="pl-c1">$</span>pri_key</span>) {
             <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span> = <span class="pl-s1"><span class="pl-c1">$</span>pri_key</span>;
-            <span class="pl-s1"><span class="pl-c1">$</span>pri_id</span> = openssl_pkey_get_private(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>);
-            <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> = openssl_pkey_get_details(<span class="pl-s1"><span class="pl-c1">$</span>pri_id</span>)[<span class="pl-s">'bits'</span>];
+            <span class="pl-s1"><span class="pl-c1">$</span>pri_id</span> = <span class="pl-en">openssl_pkey_get_private</span>(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>);
+            <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> = <span class="pl-en">openssl_pkey_get_details</span>(<span class="pl-s1"><span class="pl-c1">$</span>pri_id</span>)[<span class="pl-s">'<span class="pl-s">bits</span>'</span>];
         }
     }
 
@@ -414,17 +414,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">function</span> <span class="pl-en">createKeys</span>(<span class="pl-s1"><span class="pl-c1">$</span>key_size</span> = <span class="pl-c1">1024</span>)
     {
         <span class="pl-s1"><span class="pl-c1">$</span>config</span> = <span class="pl-en">array</span>(
-            "<span class="pl-s">private_key_bits</span>" =&gt; <span class="pl-s1"><span class="pl-c1">$</span>key_size</span>,
-            "<span class="pl-s">private_key_type</span>" =&gt; <span class="pl-smi">self</span>::<span class="pl-c1">RSA_ALGORITHM_KEY_TYPE</span>,
+            <span class="pl-s">"<span class="pl-s">private_key_bits</span>"</span> =&gt; <span class="pl-s1"><span class="pl-c1">$</span>key_size</span>,
+            <span class="pl-s">"<span class="pl-s">private_key_type</span>"</span> =&gt; <span class="pl-smi">self</span>::<span class="pl-c1">RSA_ALGORITHM_KEY_TYPE</span>,
         );
-        <span class="pl-s1"><span class="pl-c1">$</span>res</span> = openssl_pkey_new(<span class="pl-s1"><span class="pl-c1">$</span>config</span>);
-        openssl_pkey_export(<span class="pl-s1"><span class="pl-c1">$</span>res</span>, <span class="pl-s1"><span class="pl-c1">$</span>private_key</span>);
-        <span class="pl-s1"><span class="pl-c1">$</span>public_key_detail</span> = openssl_pkey_get_details(<span class="pl-s1"><span class="pl-c1">$</span>res</span>);
-        <span class="pl-s1"><span class="pl-c1">$</span>public_key</span> = <span class="pl-s1"><span class="pl-c1">$</span>public_key_detail</span>["<span class="pl-s">key</span>"];
+        <span class="pl-s1"><span class="pl-c1">$</span>res</span> = <span class="pl-en">openssl_pkey_new</span>(<span class="pl-s1"><span class="pl-c1">$</span>config</span>);
+        <span class="pl-en">openssl_pkey_export</span>(<span class="pl-s1"><span class="pl-c1">$</span>res</span>, <span class="pl-s1"><span class="pl-c1">$</span>private_key</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>public_key_detail</span> = <span class="pl-en">openssl_pkey_get_details</span>(<span class="pl-s1"><span class="pl-c1">$</span>res</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>public_key</span> = <span class="pl-s1"><span class="pl-c1">$</span>public_key_detail</span>[<span class="pl-s">"<span class="pl-s">key</span>"</span>];
 
         <span class="pl-k">return</span> <span class="pl-en">array</span>(
-            "<span class="pl-s">public_key</span>" =&gt; <span class="pl-s1"><span class="pl-c1">$</span>public_key</span>,
-            "<span class="pl-s">private_key</span>" =&gt; <span class="pl-s1"><span class="pl-c1">$</span>private_key</span>,
+            <span class="pl-s">"<span class="pl-s">public_key</span>"</span> =&gt; <span class="pl-s1"><span class="pl-c1">$</span>public_key</span>,
+            <span class="pl-s">"<span class="pl-s">private_key</span>"</span> =&gt; <span class="pl-s1"><span class="pl-c1">$</span>private_key</span>,
         );
     }
 
@@ -435,15 +435,15 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     {
         <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span> = <span class="pl-s">''</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>part_len</span> = <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> / <span class="pl-c1">8</span> - <span class="pl-c1">11</span>;
-        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = str_split(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = <span class="pl-en">str_split</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
 
         <span class="pl-k">foreach</span> (<span class="pl-s1"><span class="pl-c1">$</span>parts</span> <span class="pl-k">as</span> <span class="pl-s1"><span class="pl-c1">$</span>part</span>) {
             <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span> = <span class="pl-s">''</span>;
-            openssl_public_encrypt(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
+            <span class="pl-en">openssl_public_encrypt</span>(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
             <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span> .= <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span>;
         }
 
-        <span class="pl-k">return</span> base64_encode(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
+        <span class="pl-k">return</span> <span class="pl-en">base64_encode</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
     }
 
     <span class="pl-c">/*</span>
@@ -451,16 +451,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c">     */</span>
     <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">privateDecrypt</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>)
     {
-        <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span> = "";
+        <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span> = <span class="pl-s">""</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>part_len</span> = <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> / <span class="pl-c1">8</span>; 
         <span class="pl-c">//url  中的get传值默认会吧+号过滤成' '，替换回来就好了</span>
-        str_replace(<span class="pl-s">'% '</span>, <span class="pl-s">'+'</span>, <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>); 
+        <span class="pl-en">str_replace</span>(<span class="pl-s">'<span class="pl-s">% </span>'</span>, <span class="pl-s">'<span class="pl-s">+</span>'</span>, <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>); 
         <span class="pl-k">echo</span> <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>;
-        <span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span> = base64_decode(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
-        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = str_split(<span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span> = <span class="pl-en">base64_decode</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = <span class="pl-en">str_split</span>(<span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
         <span class="pl-k">foreach</span> (<span class="pl-s1"><span class="pl-c1">$</span>parts</span> <span class="pl-k">as</span> <span class="pl-s1"><span class="pl-c1">$</span>part</span>) {
             <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span> = <span class="pl-s">''</span>;
-            openssl_private_decrypt(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>);
+            <span class="pl-en">openssl_private_decrypt</span>(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>);
             <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span> .= <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span>;
         }
         <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span>;
@@ -473,14 +473,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     {
         <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span> = <span class="pl-s">''</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>part_len</span> = <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> / <span class="pl-c1">8</span> - <span class="pl-c1">11</span>;
-        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = str_split(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = <span class="pl-en">str_split</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
 
         <span class="pl-k">foreach</span> (<span class="pl-s1"><span class="pl-c1">$</span>parts</span> <span class="pl-k">as</span> <span class="pl-s1"><span class="pl-c1">$</span>part</span>) {
             <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span> = <span class="pl-s">''</span>;
-            openssl_private_encrypt(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>);
+            <span class="pl-en">openssl_private_encrypt</span>(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>);
             <span class="pl-s1"><span class="pl-c1">$</span>encrypted</span> .= <span class="pl-s1"><span class="pl-c1">$</span>encrypted_temp</span>;
         }
-        <span class="pl-k">return</span> base64_encode(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
+        <span class="pl-k">return</span> <span class="pl-en">base64_encode</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
     }
 
     <span class="pl-c">/*</span>
@@ -488,14 +488,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c">     */</span>
     <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">publicDecrypt</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>)
     {
-        <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span> = "";
+        <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span> = <span class="pl-s">""</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>part_len</span> = <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">key_len</span> / <span class="pl-c1">8</span>;
-        <span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span> = base64_decode(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
-        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = str_split(<span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span> = <span class="pl-en">base64_decode</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>parts</span> = <span class="pl-en">str_split</span>(<span class="pl-s1"><span class="pl-c1">$</span>base64_decoded</span>, <span class="pl-s1"><span class="pl-c1">$</span>part_len</span>);
 
         <span class="pl-k">foreach</span> (<span class="pl-s1"><span class="pl-c1">$</span>parts</span> <span class="pl-k">as</span> <span class="pl-s1"><span class="pl-c1">$</span>part</span>) {
             <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span> = <span class="pl-s">''</span>;
-            openssl_public_decrypt(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
+            <span class="pl-en">openssl_public_decrypt</span>(<span class="pl-s1"><span class="pl-c1">$</span>part</span>, <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
             <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span> .= <span class="pl-s1"><span class="pl-c1">$</span>decrypted_temp</span>;
         }
         <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-c1">$</span>decrypted</span>;
@@ -506,8 +506,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c">     */</span>
     <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">sign</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>)
     {
-        openssl_sign(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>sign</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>, <span class="pl-smi">self</span>::<span class="pl-c1">RSA_ALGORITHM_SIGN</span>);
-        <span class="pl-k">return</span> base64_encode(<span class="pl-s1"><span class="pl-c1">$</span>sign</span>);
+        <span class="pl-en">openssl_sign</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>sign</span>, <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">private_key</span>, <span class="pl-smi">self</span>::<span class="pl-c1">RSA_ALGORITHM_SIGN</span>);
+        <span class="pl-k">return</span> <span class="pl-en">base64_encode</span>(<span class="pl-s1"><span class="pl-c1">$</span>sign</span>);
     }
 
     <span class="pl-c">/*</span>
@@ -515,8 +515,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c">     */</span>
     <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">verify</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>sign</span>)
     {
-        <span class="pl-s1"><span class="pl-c1">$</span>pub_id</span> = openssl_get_publickey(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
-        <span class="pl-s1"><span class="pl-c1">$</span>res</span> = openssl_verify(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, base64_decode(<span class="pl-s1"><span class="pl-c1">$</span>sign</span>), <span class="pl-s1"><span class="pl-c1">$</span>pub_id</span>, <span class="pl-smi">self</span>::<span class="pl-c1">RSA_ALGORITHM_SIGN</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>pub_id</span> = <span class="pl-en">openssl_get_publickey</span>(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-c1">public_key</span>);
+        <span class="pl-s1"><span class="pl-c1">$</span>res</span> = <span class="pl-en">openssl_verify</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-en">base64_decode</span>(<span class="pl-s1"><span class="pl-c1">$</span>sign</span>), <span class="pl-s1"><span class="pl-c1">$</span>pub_id</span>, <span class="pl-smi">self</span>::<span class="pl-c1">RSA_ALGORITHM_SIGN</span>);
         <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-c1">$</span>res</span>;
     }
 

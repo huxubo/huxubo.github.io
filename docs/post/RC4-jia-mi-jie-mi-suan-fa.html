@@ -87,34 +87,34 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 {
     <span class="pl-s1"><span class="pl-c1">$</span>key</span> = [];
     <span class="pl-s1"><span class="pl-c1">$</span>box</span> = [];
-    <span class="pl-s1"><span class="pl-c1">$</span>pwd_length</span> = strlen(<span class="pl-s1"><span class="pl-c1">$</span>pwd</span>);
-    <span class="pl-s1"><span class="pl-c1">$</span>data_length</span> = strlen(<span class="pl-s1"><span class="pl-c1">$</span>data</span>);
+    <span class="pl-s1"><span class="pl-c1">$</span>pwd_length</span> = <span class="pl-en">strlen</span>(<span class="pl-s1"><span class="pl-c1">$</span>pwd</span>);
+    <span class="pl-s1"><span class="pl-c1">$</span>data_length</span> = <span class="pl-en">strlen</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>);
     <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> = <span class="pl-s">''</span>;
 
-    for (<span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-c1">256</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
-        <span class="pl-s1"><span class="pl-c1">$</span>key</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = ord(<span class="pl-s1"><span class="pl-c1">$</span>pwd</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span> % <span class="pl-s1"><span class="pl-c1">$</span>pwd_length</span>]);
+    <span class="pl-k">for</span> (<span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-c1">256</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
+        <span class="pl-s1"><span class="pl-c1">$</span>key</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = <span class="pl-en">ord</span>(<span class="pl-s1"><span class="pl-c1">$</span>pwd</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span> % <span class="pl-s1"><span class="pl-c1">$</span>pwd_length</span>]);
         <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = <span class="pl-s1"><span class="pl-c1">$</span>i</span>;
     }
 
-    for (<span class="pl-s1"><span class="pl-c1">$</span>j</span> = <span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-c1">256</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
+    <span class="pl-k">for</span> (<span class="pl-s1"><span class="pl-c1">$</span>j</span> = <span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-c1">256</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
         <span class="pl-s1"><span class="pl-c1">$</span>j</span> = (<span class="pl-s1"><span class="pl-c1">$</span>j</span> + <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] + <span class="pl-s1"><span class="pl-c1">$</span>key</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>]) % <span class="pl-c1">256</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>tmp</span> = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>];
         <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>] = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>];
         <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>] = <span class="pl-s1"><span class="pl-c1">$</span>tmp</span>;
     }
 
-    for (<span class="pl-s1"><span class="pl-c1">$</span>a</span> = <span class="pl-s1"><span class="pl-c1">$</span>j</span> = <span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-s1"><span class="pl-c1">$</span>data_length</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
+    <span class="pl-k">for</span> (<span class="pl-s1"><span class="pl-c1">$</span>a</span> = <span class="pl-s1"><span class="pl-c1">$</span>j</span> = <span class="pl-s1"><span class="pl-c1">$</span>i</span> = <span class="pl-c1">0</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span> &lt; <span class="pl-s1"><span class="pl-c1">$</span>data_length</span>; <span class="pl-s1"><span class="pl-c1">$</span>i</span>++) {
         <span class="pl-s1"><span class="pl-c1">$</span>a</span> = (<span class="pl-s1"><span class="pl-c1">$</span>a</span> + <span class="pl-c1">1</span>) % <span class="pl-c1">256</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>j</span> = (<span class="pl-s1"><span class="pl-c1">$</span>j</span> + <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>]) % <span class="pl-c1">256</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>tmp</span> = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>];
         <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>] = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>];
         <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>] = <span class="pl-s1"><span class="pl-c1">$</span>tmp</span>;
         <span class="pl-s1"><span class="pl-c1">$</span>k</span> = <span class="pl-s1"><span class="pl-c1">$</span>box</span>[((<span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>a</span>] + <span class="pl-s1"><span class="pl-c1">$</span>box</span>[<span class="pl-s1"><span class="pl-c1">$</span>j</span>]) % <span class="pl-c1">256</span>)];
-        <span class="pl-s1"><span class="pl-c1">$</span>result</span> = ord(<span class="pl-s1"><span class="pl-c1">$</span>data</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>]) ^ <span class="pl-s1"><span class="pl-c1">$</span>k</span>;
+        <span class="pl-s1"><span class="pl-c1">$</span>result</span> = <span class="pl-en">ord</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>[<span class="pl-s1"><span class="pl-c1">$</span>i</span>]) ^ <span class="pl-s1"><span class="pl-c1">$</span>k</span>;
         <span class="pl-k">if</span> (<span class="pl-s1"><span class="pl-c1">$</span>decrypt</span>) {
-            <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> .= chr(<span class="pl-s1"><span class="pl-c1">$</span>result</span>);
+            <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> .= <span class="pl-en">chr</span>(<span class="pl-s1"><span class="pl-c1">$</span>result</span>);
         } <span class="pl-k">else</span> {
-            <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> .= sprintf("<span class="pl-s">%02x</span>", <span class="pl-s1"><span class="pl-c1">$</span>result</span>);
+            <span class="pl-s1"><span class="pl-c1">$</span>cipher</span> .= <span class="pl-en">sprintf</span>(<span class="pl-s">"<span class="pl-s">%02x</span>"</span>, <span class="pl-s1"><span class="pl-c1">$</span>result</span>);
         }
     }
 
@@ -122,16 +122,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }
 
 <span class="pl-c">// 测试加密和解密</span>
-<span class="pl-s1"><span class="pl-c1">$</span>data</span> = "<span class="pl-s">HelloWorld</span>"; <span class="pl-c">// 要加密的数据</span>
-<span class="pl-s1"><span class="pl-c1">$</span>key</span> = "<span class="pl-s">my_secret_key</span>"; <span class="pl-c">// 加密使用的密钥</span>
+<span class="pl-s1"><span class="pl-c1">$</span>data</span> = <span class="pl-s">"<span class="pl-s">HelloWorld</span>"</span>; <span class="pl-c">// 要加密的数据</span>
+<span class="pl-s1"><span class="pl-c1">$</span>key</span> = <span class="pl-s">"<span class="pl-s">my_secret_key</span>"</span>; <span class="pl-c">// 加密使用的密钥</span>
 
 <span class="pl-c">// 加密</span>
-<span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span> = rc4(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>key</span>);
-<span class="pl-k">echo</span> "<span class="pl-s">加密后的数据：</span><span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span>\n";
+<span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span> = <span class="pl-en">rc4</span>(<span class="pl-s1"><span class="pl-c1">$</span>data</span>, <span class="pl-s1"><span class="pl-c1">$</span>key</span>);
+<span class="pl-k">echo</span> <span class="pl-s">"<span class="pl-s">加密后的数据：</span><span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span>\n"</span>;
 
 <span class="pl-c">// 解密</span>
-<span class="pl-s1"><span class="pl-c1">$</span>decrypted_data</span> = rc4(hex2bin(<span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span>), <span class="pl-s1"><span class="pl-c1">$</span>key</span>, <span class="pl-c1">true</span>);
-<span class="pl-k">echo</span> "<span class="pl-s">解密后的数据：</span><span class="pl-s1"><span class="pl-c1">$</span>decrypted_data</span>\n";</pre></div></div>
+<span class="pl-s1"><span class="pl-c1">$</span>decrypted_data</span> = <span class="pl-en">rc4</span>(<span class="pl-en">hex2bin</span>(<span class="pl-s1"><span class="pl-c1">$</span>encrypted_data</span>), <span class="pl-s1"><span class="pl-c1">$</span>key</span>, <span class="pl-c1">true</span>);
+<span class="pl-k">echo</span> <span class="pl-s">"<span class="pl-s">解密后的数据：</span><span class="pl-s1"><span class="pl-c1">$</span>decrypted_data</span>\n"</span>;</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
